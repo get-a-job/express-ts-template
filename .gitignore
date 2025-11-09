@@ -16,6 +16,17 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
+# Typescript
+dist/
+build/
+
+# Ide
+.vscode/
+.idea/
+
+# logs
+*.log
+
 # ignore additional files using core.excludesFile
 # https://git-scm.com/docs/gitignore
 /src/generated/prisma
