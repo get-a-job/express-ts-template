@@ -3,10 +3,11 @@
 A simple template repo that is pre configured with:
 
 - [x] ESM Modules
-- [x] TS config
+- [x] TypeScript config
 - [x] Node cli + types
 - [x] Prisma and postgres docker-compose
-- [ ] Express (typescript + esm) + types
+- [x] Express
+- [x] Pino for logging
 - [ ] EJS, EJS Layout
 - [ ] tailwind Frontend
 - [ ] HTMX
@@ -61,3 +62,7 @@ Add the following dev dependencies
 ## Setting up Express with TypeScript
 
 I'm following [this link](https://blog.logrocket.com/express-typescript-node/).
+
+##  Pino
+
+I got a config to add from chatgpt
