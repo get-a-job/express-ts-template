@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts",
+    "start": "node dist/server.js",
+    "dev": "tsx watch src/server.ts",
     "cli:build": "tsc",
     "cli:start": "node dist/cli/index.js",
     "cli:dev": "tsx watch src/cli/index.ts",
@@ -28,6 +28,7 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
+    "@types/express": "^5.0.5",
     "@types/node": "^24.10.0",
     "prisma": "^6.16.3",
     "tsx": "^4.20.6",

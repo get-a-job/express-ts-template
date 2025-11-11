@@ -57,3 +57,7 @@ Add the following dev dependencies
 - Update prisma.config.ts get env vars using dotenv + expand
 - Start postgres container
 - Run npm run prisma:migrate
+
+## Setting up Express with TypeScript
+
+I'm following [this link](https://blog.logrocket.com/express-typescript-node/).
