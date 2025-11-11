@@ -9,8 +9,9 @@ A simple template repo that is pre configured with:
 - [x] Express
 - [x] Pino for logging
 - [x] EJS, EJS Layout
-- [ ] tailwind Frontend
+- [ ] tailwind
 - [ ] HTMX
+- [ ] AlpineJS
 
 ## ESM
 
