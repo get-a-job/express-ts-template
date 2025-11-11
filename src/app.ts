@@ -2,9 +2,7 @@ import express from "express";
 import path from "path";
 import { errorHandler } from "./middlewares/errorHandler.js";
 import expressLayouts from "express-ejs-layouts";
-
-import homeWebRoutes from "./routes/web/homeRoutes.js";
-import homeApiRoutes from "./routes/api/homeRoutes.js";
+import { registerRoutes } from "./routes/index.js";
 
 const app = express();
 
@@ -16,8 +14,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(process.cwd(), "src", "views"));
 
 // Routes
-app.use("/", homeWebRoutes);
-app.use("/api", homeApiRoutes);
+registerRoutes(app);
 
 app.use(errorHandler);
 
