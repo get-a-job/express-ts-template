@@ -33,17 +33,17 @@ pipeline {
 
                     if (branch == 'main') {
                         sh """
-                            docker buildx build -t ${APP_NAME}:${commit_hash} -t ${APP_NAME}:latest .
-                            docker tag ${APP_NAME}:${commit_hash} ${DOCKER_REGISTRY}/${APP_NAME}:${commit_hash}
-                            docker tag ${APP_NAME}:latest ${DOCKER_REGISTRY}/${APP_NAME}:latest
-                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:${commit_hash}
-                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:latest
+                            docker buildx build -t ${app_name}:${commit_hash} -t ${app_name}:latest .
+                            docker tag ${app_name}:${commit_hash} ${DOCKER_REGISTRY}/${app_name}:${commit_hash}
+                            docker tag ${app_name}:latest ${DOCKER_REGISTRY}/${app_name}:latest
+                            docker push ${DOCKER_REGISTRY}/${app_name}:${commit_hash}
+                            docker push ${DOCKER_REGISTRY}/${app_name}:latest
                         """
                     } else {
                         sh """
-                            docker buildx build -t ${APP_NAME}:${branch} .
-                            docker tag ${APP_NAME}:${branch} ${DOCKER_REGISTRY}/${APP_NAME}:${branch}
-                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:${branch}
+                            docker buildx build -t ${app_name}:${branch} .
+                            docker tag ${app_name}:${branch} ${DOCKER_REGISTRY}/${app_name}:${branch}
+                            docker push ${DOCKER_REGISTRY}/${app_name}:${branch}
                         """
                     }
                 }
