@@ -1,51 +1,61 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:20'
+            args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
 
     stages {
         stage('Install & Build') {
-            agent {
-                docker {
-                    image 'node:20'
-                    args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
-                }
-            }
             steps {
-                sh 'node -v'
-                sh 'npm -v'
                 sh 'npm ci'
                 sh 'npm run build'
             }
-    }
+        }
 
         stage('Test') {
             steps {
-                sh 'npm run test'
+                sh 'npm test'
             }
         }
 
         stage('Docker Build & Push') {
             steps {
                 script {
-                    def app_name = 'express-ts-template'
-                    def branch = BRANCH_NAME
-                    def commit_hash = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+                    def branch = env.BRANCH_NAME ?: 'local'
+                    def commit_hash = sh(
+                        script: 'git rev-parse --short HEAD',
+                        returnStdout: true
+                    ).trim()
 
-                    // Tagging logic
                     if (branch == 'main') {
-                        // For 'main' branch: use both commit hash and 'latest' tag
-                        sh "docker buildx build -t ${app_name}:${commit_hash} -t ${app_name}:latest ."
-                        sh "docker tag ${app_name}:${commit_hash} ${DOCKER_REGISTRY}/${app_name}:${commit_hash}"
-                        sh "docker tag ${app_name}:latest ${DOCKER_REGISTRY}/${app_name}:latest"
-                        sh "docker push ${DOCKER_REGISTRY}/${app_name}:${commit_hash}"
-                        sh "docker push ${DOCKER_REGISTRY}/${app_name}:latest"
+                        sh """
+                            docker buildx build -t ${APP_NAME}:${commit_hash} -t ${APP_NAME}:latest .
+                            docker tag ${APP_NAME}:${commit_hash} ${DOCKER_REGISTRY}/${APP_NAME}:${commit_hash}
+                            docker tag ${APP_NAME}:latest ${DOCKER_REGISTRY}/${APP_NAME}:latest
+                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:${commit_hash}
+                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:latest
+                        """
                     } else {
-                        // For other branches: use the branch name as the tag
-                        sh "docker buildx build -t ${app_name}:${branch} ."
-                        sh "docker tag ${app_name}:${branch} ${DOCKER_REGISTRY}/${app_name}:${branch}"
-                        sh "docker push ${DOCKER_REGISTRY}/${app_name}:${branch}"
+                        sh """
+                            docker buildx build -t ${APP_NAME}:${branch} .
+                            docker tag ${APP_NAME}:${branch} ${DOCKER_REGISTRY}/${APP_NAME}:${branch}
+                            docker push ${DOCKER_REGISTRY}/${APP_NAME}:${branch}
+                        """
                     }
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            echo "Cleaning up dangling containers and build cache"
+            sh '''
+            docker container prune -f || true
+            docker builder prune -f || true
+            '''
         }
     }
 }
