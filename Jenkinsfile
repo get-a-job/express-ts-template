@@ -5,8 +5,6 @@ pipeline {
         stage('Install & Build') {
             steps {
                 echo "Installing dependencies and building the app"
-                sh 'node -v'
-                sh 'npm -v'
                 sh 'npm ci'
                 sh 'npm run build'
             }
@@ -24,6 +22,7 @@ pipeline {
                 script {
                     sh 'git config --global --add safe.directory $PWD'
 
+                    def app_name = 'express-ts-template'
                     def branch = env.BRANCH_NAME ?: 'local'
                     def commit_hash = sh(
                         script: 'git rev-parse --short HEAD',
