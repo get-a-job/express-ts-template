@@ -10,8 +10,8 @@ A simple template repo that is pre configured with:
 - [x] Pino for logging
 - [x] EJS, EJS Layout
 - [x] tailwind
-- [ ] HTMX
-- [ ] AlpineJS
+- [x] HTMX
+- [x] AlpineJS
 - [ ] Add tests
 - [x] Add Dockerfile
 - [ ] Create GitHub template
@@ -19,8 +19,10 @@ A simple template repo that is pre configured with:
 - [ ] Build and Deploy locally
 - [ ] Deploy locally with db
 - [ ] Build with Jenkins
+- [ ] integration tests relying on DB
 - [ ] Deploy to server
 - [ ] Update readme
+- [ ] Add renovate
 
 ## ESM
 

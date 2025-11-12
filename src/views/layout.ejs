@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/main.css" />
+
+    <script src="/vendor/htmx.min.js"></script>
+
+    <script src="/vendor/alpine.min.js" defer></script>
     <title>
         <%= title %>
     </title>
 </head>
 
-<body class="bg-gray-100 text-gray-900">
+<body hx-boost="true">
     <%- body %>
 </body>
 

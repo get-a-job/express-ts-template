@@ -9,3 +9,25 @@
 <div class="bg-red-500 text-white p-6 rounded">
     Tailwind test 🔥
 </div>
+
+
+<div x-data="{ open: false }">
+    <button @click="open = !open">Expand</button>
+
+    <span x-show="open">
+        Alpine test
+    </span>
+</div>
+
+<tr id="replaceMe">
+    <td colspan="3">
+        <button class='btn primary' hx-get="/contacts/?page=2" hx-target="#replaceMe" hx-swap="outerHTML">
+            Load More Agents... <img class="htmx-indicator" src="/img/bars.svg" alt="">
+        </button>
+    </td>
+</tr>
+
+
+<button hx-get="/confirmed" hx-confirm="Some confirm text here">
+    Click Me
+</button>
