@@ -1,17 +1,21 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "node20"
-    }
-
     stages {
         stage('Install & Build') {
+            agent {
+                docker {
+                    image 'node:20'
+                    args '-u root:root -v /var/run/docker.sock:/var/run/docker.sock'
+                }
+            }
             steps {
+                sh 'node -v'
+                sh 'npm -v'
                 sh 'npm ci'
                 sh 'npm run build'
             }
-        }
+    }
 
         stage('Test') {
             steps {
