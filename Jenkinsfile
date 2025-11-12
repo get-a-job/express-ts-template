@@ -24,7 +24,7 @@ pipeline {
                 script {
                     sh 'git config --global --add safe.directory $PWD'
                     
-                    def app_name = 'express-ts-template'
+                    def APP_NAME = 'express-ts-template'
                     def branch = env.BRANCH_NAME ?: 'local'
                     def commit_hash = sh(
                         script: 'git rev-parse --short HEAD',
