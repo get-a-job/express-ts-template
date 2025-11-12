@@ -14,15 +14,15 @@ A simple template repo that is pre configured with:
 - [x] AlpineJS
 - [ ] Add tests
 - [x] Add Dockerfile
-- [ ] Create GitHub template
-- [ ] Add GitHub actions
-- [ ] Build and Deploy locally
+- [x] Create GitHub template repo
+- [x] Add GitHub actions
+- [x] Build and Deploy locally
 - [ ] Deploy locally with db
-- [ ] Build with Jenkins
+- [x] Build with Jenkins
 - [ ] integration tests relying on DB
 - [ ] Deploy to server
 - [ ] Update readme
-- [ ] Add renovate
+- [x] Add renovate
 
 ## ESM
 
@@ -100,3 +100,9 @@ The `build:css` task generates the production minified version of our css this i
 Add a `Dockerfile` that is used to build and run the application.
 
 I updated the build script to copy the views and static files to the dist folder so the running application can see them.
+
+## Alpine js and htmx
+
+The minified versions of these can be included to our source code in the `public/vendors` folder. These can then be added to the layout file.
+
+## Github actions
