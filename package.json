@@ -32,14 +32,17 @@
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.16.3",
     "pino": "^10.1.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.17",
+    "@testcontainers/postgresql": "^11.8.1",
     "@types/ejs": "^3.1.5",
     "@types/express": "^5.0.5",
     "@types/express-ejs-layouts": "^2.5.4",
     "@types/node": "^24.10.0",
+    "@types/pg": "^8.15.6",
     "@types/supertest": "^6.0.3",
     "@vitest/coverage-v8": "^4.0.8",
     "concurrently": "^9.2.1",
