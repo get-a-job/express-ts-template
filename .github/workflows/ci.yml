@@ -23,6 +23,16 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'npm'
 
+      # 👇 This is required for Testcontainers
+      - name: Enable Docker
+        run: |
+          sudo systemctl start docker
+          docker info
+
+      # 👇 Helps avoid Ryuk startup timeouts
+      - name: Configure Testcontainers timeout
+        run: echo "TESTCONTAINERS_RYUK_DISABLED=false" >> $GITHUB_ENV
+        
       - run: npm ci
       - run: npm run build
       - run: npm test
