@@ -19,8 +19,8 @@ A simple template repo that is pre configured with:
 - [x] Build and Deploy locally
 - [x] Deploy locally with db
 - [x] Build with Jenkins
-- [ ] integration tests relying on DB Testcontainers
-- [ ] Deploy to server
+- [x] integration tests relying on DB Testcontainers
+- [x] Deploy to server
 - [ ] Update readme
 - [x] Add renovate
 
