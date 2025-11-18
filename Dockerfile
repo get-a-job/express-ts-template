@@ -1,5 +1,5 @@
 # ---------- BUILD STAGE ----------
-FROM node:22-slim AS build
+FROM node:25-slim AS build
 WORKDIR /app
 
 COPY package*.json ./
@@ -11,7 +11,7 @@ RUN npm run build
 
 
 # ---------- RUNTIME STAGE ----------
-FROM node:22-slim AS runtime
+FROM node:25-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 
