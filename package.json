@@ -51,7 +51,7 @@
     "concurrently": "^9.2.1",
     "copyfiles": "^2.4.1",
     "pino-pretty": "^13.1.2",
-    "prisma": "^6.16.3",
+    "prisma": "^7.0.0",
     "supertest": "^7.1.4",
     "tailwindcss": "^4.1.17",
     "tsx": "^4.20.6",
